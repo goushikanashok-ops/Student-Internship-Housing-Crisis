@@ -1,4 +1,4 @@
-Students' Internship Housing problem.
+#Students' Internship Housing problem.
 Created for the UCSD Warren College Writing Program, a website to house a policy report, 2026.
 About
 This project investigates the economic, geographical, racial and institutional obstacles to low-income students pursuing professional internships. The website is the on-line version of our think tank report, which promotes structural changes in internships to ensure that all students, regardless of financial status, are equally represented.
