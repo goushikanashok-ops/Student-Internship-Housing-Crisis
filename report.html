@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Report — Student Internship Housing Crisis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .report-hero {
+      padding: 5rem 2.5rem 4rem;
+      max-width: 780px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .report-hero .section-label { margin-bottom: 1rem; }
+    .report-hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both 0.15s;
+      width: 100%;
+    }
+    .report-meta {
+      font-size: 13px;
+      color: var(--ink-faint);
+      animation: fadeUp 0.6s ease both 0.3s;
+      margin-bottom: 0;
+      width: 100%;
+    }
+    .report-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2.5rem 6rem;
+    }
+    .report-section {
+      padding: 3.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .report-section:last-of-type { border-bottom: none; }
+    .report-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.7rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 1.75rem;
+      color: var(--ink);
+    }
+    .report-section h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin: 2.5rem 0 1rem;
+    }
+    .report-section p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .report-section p:last-child { margin-bottom: 0; }
+    .report-figure {
+      margin: 2.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .report-figure img {
+      width: 100%;
+      display: block;
+      background: var(--paper-warm);
+    }
+    .report-figure figcaption {
+      padding: 1rem 1.25rem;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      border-top: 1px solid var(--border);
+      background: var(--paper-warm);
+    }
+    .stat-callout {
+      background: var(--paper-warm);
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 2px 2px 0;
+    }
+    .stat-callout .num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .stat-callout .label {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+    .stat-callout-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .stat-callout-row .stat-callout {
+      border-left: none;
+      border-radius: 0;
+      margin: 0;
+      background: var(--paper);
+    }
+    .proposal-block {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .proposal-block:first-of-type { border-top: 1px solid var(--border); }
+    .proposal-block .pnum {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.3rem;
+      color: var(--accent);
+      min-width: 28px;
+    }
+    .proposal-block .pcontent h4 {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .proposal-block .pcontent p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .works-cited h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+    .works-cited ol {
+      list-style: none;
+      counter-reset: cite-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .works-cited ol li {
+      counter-increment: cite-counter;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.7;
+      padding-left: 2rem;
+      position: relative;
+    }
+    .works-cited ol li::before {
+      content: counter(cite-counter) ".";
+      position: absolute;
+      left: 0;
+      color: var(--ink-faint);
+      font-size: 12px;
+    }
+    .toc {
+      background: var(--paper-warm);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem 1.75rem;
+      margin: 2.5rem 0 0;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .toc p {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+    .toc ol {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .toc ol li a {
+      font-size: 14px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .toc ol li a:hover { color: var(--accent); }
+    .toc ol li.sub a { padding-left: 1rem; font-size: 13px; }
+    @media (max-width: 768px) {
+      .report-hero { padding: 3rem 1.25rem 2.5rem; }
+      .report-body { padding: 0 1.25rem 4rem; }
+      .stat-callout-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Student Internship Housing Crisis<span>.</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#about" class="nav-link">About</a></li>
+      <li><a href="index.html#problem" class="nav-link">The problem</a></li>
+      <li><a href="index.html#solutions" class="nav-link">Solutions</a></li>
+      <li><a href="report.html" class="nav-link nav-report active">Report</a></li>
+    </ul>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="index.html#about" class="mobile-link">About</a></li>
+      <li><a href="index.html#problem" class="mobile-link">The problem</a></li>
+      <li><a href="index.html#solutions" class="mobile-link">Solutions</a></li>
+      <li><a href="report.html" class="mobile-link">Report</a></li>
+    </ul>
+  </div>
+
+  <div class="report-hero">
+    <p class="section-label">Full report</p>
+    <h1>Student Internship Housing Crisis</h1>
+    <p class="report-meta">UCSD Warren College Writing Program &nbsp;·&nbsp; 2026</p>
+    <div class="toc">
+      <p>Contents</p>
+      <ol>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#barriers">Barriers to Internship Access</a></li>
+        <li class="sub"><a href="#financial">Financial barriers</a></li>
+        <li class="sub"><a href="#geographic">Geographic barriers</a></li>
+        <li class="sub"><a href="#racial">Racial and structural barriers</a></li>
+        <li class="sub"><a href="#institutional">Institutional barriers</a></li>
+        <li><a href="#proposals">Proposals for a More Equitable System</a></li>
+        <li class="sub"><a href="#p1">01 — Paid or fully funded internships</a></li>
+        <li class="sub"><a href="#p2">02 — University housing network</a></li>
+        <li class="sub"><a href="#p3">03 — Employer commute scores</a></li>
+        <li class="sub"><a href="#p4">04 — Centralized housing platform</a></li>
+        <li class="sub"><a href="#p5">05 — Remote and hybrid options</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#works-cited">Works Cited</a></li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="report-body">
+
+    <div class="report-section" id="intro">
+      <h2>Introduction</h2>
+      <p>The transition from college to career has become increasingly dependent on internships. What was once an optional opportunity to gain experience has evolved into an unofficial requirement for entry into the professional world. Yet access to internships is far from equal. For students from low-income backgrounds, the true cost of participation, including housing, transportation, food, and lost wages, creates barriers that wealthier peers often do not have to consider. This report advocates that the internship housing crisis is more than just one isolated issue. It's a network of financial, geographic, racial and institutional factors which determine who can afford to participate in professional opportunities.</p>
+      <p>In order to clearly outline these problems and potential solutions, this report will be divided into two sections: problem statements that illuminate why interns can't equitably access opportunity and solution proposals that universities, employers, and policymakers can actually enact. The goal is not simply to describe why internships are difficult for students, but to show how the current system rewards wealth over talent and why structural reforms are necessary.</p>
+    </div>
+
+    <div class="report-section" id="barriers">
+      <h2>Barriers to Internship Access</h2>
+
+      <h3 id="financial">Financial barriers: the burden of unpaid and underpaid internships</h3>
+      <p>Internships rarely pay well enough to cover the true cost of participation. Students often have to pay for rent, transportation, food, professional clothing, and other costs associated with living on their own, sometimes without earning a paycheck at all. Rather than putting everyone on a level playing field, financial support from family allows some students to take advantage of career-building opportunities while forcing low-income students to decline them. Internships are designed to give students experience, but unpaid internships often place professional development in the hands of wealthier families.</p>
+      <p>Fair access to internships is critical because internships have become a cornerstone of the college-to-career pipeline. College students use internships to build resumes, references, networks, and prove themselves in the hope of full-time job offers. But when internships fail to provide a livable wage, they turn away students who cannot afford to work without compensation. The National Association of Colleges and Employers explains that "unpaid internships exacerbate equity concerns" because these opportunities are significantly more difficult to obtain for students who cannot afford to give up paid employment. Essentially, unpaid internships can reward students who are already financially secure and punish students who need income from a job.</p>
+      <p>The expense of unpaid internships does not end with lost wages. Students must often pay for summer housing, transportation to and from work, food, professional clothes, and other basic living costs. According to the Center for Research on College-Workforce Transitions, unpaid internships frequently shift the burden of living expenses onto students and their families, making them inaccessible for low-income students. This problem becomes even more serious in high-cost cities, where many competitive internships are located. Students doing internships in the Bay Area, New York City, Los Angeles, or Washington, D.C., often face high rents while earning little to no pay.</p>
+      <p>Unpaid internships can end up costing students thousands of dollars. One study from the Society for Advancing Business Editing and Writing found that unpaid interns can spend up to $12,986 on missed wages, transportation, housing, and living expenses. This means that an unpaid internship is not truly "free." It is often a hidden expense that only students with savings, family support, or outside funding can afford. For students who do not have family support, accepting an unpaid internship could mean taking on debt, working another job just to support themselves, or not taking the internship at all.</p>
+      <p>Unpaid internships have also been linked with weaker long-term career outcomes. Employers tend to give paid interns better post-graduation opportunities than unpaid interns. NACE found that paid interns from the Class of 2023 earned an average of 1.4 job offers upon graduating from college, while unpaid interns earned only 0.9 offers. If unpaid internships do not provide as strong a career benefit as paid internships but still require the same sacrifice of time, labor, and money, then internships can actually increase inequality instead of reducing it.</p>
+      <p>The discrepancy is also visible in NACE's survey of 20,000 graduating seniors from the Class of 2011. NACE reported that 52.5 percent of students participated in internships while in college. Of those students, 52 percent were paid interns and 48 percent were unpaid interns. Students who took paid internships saw greater success, with 61 percent receiving a job offer after college compared to only 38 percent of unpaid interns. This evidence shows that unpaid internships do not always lead to the same professional opportunities, yet students are still being asked to pay major costs in time, money, and lost wages.</p>
+
+      <figure class="report-figure">
+        <img src="https://github.com/goushikanashok-ops/Student-Internship-Housing-Crisis/raw/main/chart-internship-stats.png" alt="NACE chart showing 52.5% of seniors worked internships. Paid interns had a 61% job offer rate vs 38% for unpaid interns." />
+        <figcaption>Figure 1. Paid interns receive job offers at a higher rate than unpaid interns, showing that unpaid internships can require major financial sacrifice while producing weaker career outcomes. Source: NACE.</figcaption>
+      </figure>
+
+      <h3 id="geographic">Geographic barriers: housing and commute problems in high-cost cities</h3>
+      <p>The internship crisis is also a housing crisis. Many internships are concentrated in major urban areas where rent is high and short-term housing is difficult to find. The Bay Area, Los Angeles, New York City, and Washington, D.C. are among the most competitive internship markets, but they are also some of the least affordable places to live. Students who receive internships in these areas may be excited about the professional opportunity but quickly realize that housing costs make participation unrealistic.</p>
+      <p>On their own, interns frequently end up living in outer neighborhoods or lower-cost cities far from their workplace. They may sign leases without fully understanding whether the commute is realistic, safe, or affordable. The study by Blumenberg and Siddiq on Southern California reflects this problem, showing that the affordable housing crisis forces households to move toward lower-cost housing on the edges of metro areas. This is especially problematic for temporary workers, such as interns, who cannot easily change plans after signing a short-term lease.</p>
+
+      <figure class="report-figure">
+        <img src="https://github.com/goushikanashok-ops/Student-Internship-Housing-Crisis/raw/main/map-la-housing.png" alt="Map of Southern California showing jobs-housing imbalance across LA, Orange, San Bernardino, and Riverside counties." />
+        <figcaption>Figure 2. Low-wage jobs and affordable housing are often located in different areas, forcing workers and interns into longer commutes. Darker areas show a greater mismatch between affordable units and job locations. Source: Blumenberg and Siddiq.</figcaption>
+      </figure>
+
+      <p>A Congressional Research Service report on housing cost burdens also suggests that relocating farther away from job centers can create additional transportation expenses that offset the lower cost of housing. In other words, a cheaper apartment does not always mean a cheaper summer. If the student has to pay more for gas, public transit, rideshares, parking, or long commute times, the housing "savings" may disappear.</p>
+      <p>This presents a geography-of-opportunity problem. Students aren't just deciding if an internship will be professionally beneficial, they must also figure out if they can afford to live nearby, safely commute, and handle the daily transportation stress of a city they don't know. A student without a car may be forced to rely on limited public transportation, while a student with a car may still face parking costs, gas prices, and long travel times. If there is limited nighttime transit service, the commute can also become a safety problem.</p>
+      <p>Employer support is often limited. A Cartus pulse survey reported by Relocity found that 57 percent of respondents were not assisting interns with housing. This means many interns must navigate unfamiliar rental markets alone. They may not know which neighborhoods are safe, which listings are legitimate, how far a commute really is, or when they need to secure housing. The result is an information gap: students are expected to make high-stakes housing decisions without the local knowledge or institutional support needed to make those decisions well.</p>
+
+      <h3 id="racial">Racial and structural barriers in the internship pipeline</h3>
+      <p>The internship system is not racially neutral. Low-income students, who are disproportionately Black, Hispanic, and first-generation, are often the students most likely to be excluded by unpaid or underpaid internships. When internships require students to relocate, pay rent, cover food, and give up summer wages, the opportunity becomes easier for students from wealthier families and harder for students from historically marginalized backgrounds.</p>
+      <p>The cost burden begins before an intern ever enters an office. Even at lower-cost institutions like community colleges, students already struggle to afford housing, food, transportation, child care, supplies, and tuition-related expenses. American Progress argues that the true living costs of higher education are often undercounted in aid calculations, leaving low-income students exposed to financial gaps that wealthier peers are better able to absorb. Asking those same students to then finance relocation to a major coastal city for an unpaid or low-paid summer internship is not just inconvenient. It is a compounding financial barrier layered on top of an already unstable financial situation.</p>
+      <p>The National Career Development Association also emphasizes that students living in expensive urban areas and students from low-income families face the steepest financial barriers to participating in unpaid internships. This is not a minor inconvenience for a small group of students. It is a structural form of exclusion built into the geography of American opportunity. Labor economist Alan Seals captures this problem clearly, explaining that internships are often concentrated on the coasts, which are among the most expensive places in the country to live. For a student in a region with fewer internships, getting an internship also means finding a way to afford moving there for the summer.</p>
+      <p>This problem compounds over time. Georgetown University's Center on Education and the Workforce argues that competitive internships increasingly lock out low-income students because they are unpaid or offer insufficient compensation. Because those students cannot afford to participate, they graduate without internship experience and may then be disqualified from entry-level jobs that treat internship experience as a baseline expectation. As Seals notes, in some cases students need to have had an internship just to get another internship. This feeds on itself: resourceful students get early experience which allows them to continue getting experience. Students without resources get weeded out before they start.</p>
+      <p>The racial dimension also extends into housing. The 2025 Student Financial Wellness Survey, analyzing 24,361 caregiving undergraduates, found that Black students and Hispanic students reported higher rates of housing discrimination while searching for accommodations than White students. Housing discrimination is not just a general affordability problem; it is also a racialized barrier. Students of color may face difficulty not only in affording housing near internship sites, but also in being treated fairly when they try to access that housing.</p>
+
+      <figure class="report-figure">
+        <img src="https://github.com/goushikanashok-ops/Student-Internship-Housing-Crisis/raw/main/housing-discrimination.png" alt="Bar chart showing housing discrimination rates: Black 9%, Hispanic 7%, White 5%." />
+        <figcaption>Figure 3. Black and Hispanic students report higher rates of housing discrimination than White students, showing that housing barriers are also racialized. Source: Trellis Strategies and New America, 2025 Student Financial Wellness Survey.</figcaption>
+      </figure>
+      <p>This convergence of financial, geographic, and racial barriers means that low-income students of color face compounded disadvantage at every stage of the internship process. They may struggle to afford the application process, secure housing, relocate, commute safely, and then compete against peers who had more financial support from the beginning. Students who cannot fund the experience simply do not go. That is not a failure of individual ambition. This is the problem with a system that lets you trick people into thinking financial obstacles are merit holes.</p>
+
+      <h3 id="institutional">Institutional barriers: the fragmented housing search</h3>
+      <p>Another major barrier is the fragmented process of finding internship housing. For students doing internships in urban areas, housing is often one of the most difficult problems to solve. Since many internships are located in expensive areas like California, New York, and Washington, D.C., students often need to search for temporary housing on their own. States with major internship opportunities, such as California, also have significantly higher average rent prices.</p>
+
+      <figure class="report-figure">
+        <img src="https://github.com/goushikanashok-ops/Student-Internship-Housing-Crisis/raw/main/rent-by-state.png" alt="Table showing average rent by US state. California averages $2,640, DC $2,457, Connecticut $2,149." />
+        <figcaption>Figure 4. States with major internship markets, such as California and New York, also have high average rent prices, making summer internship housing difficult for students. Source: RentCafe.</figcaption>
+      </figure>
+      <p>However, the housing search process is often disorganized and confusing. Students are not only searching for affordable housing and possible roommates; they are also trying to evaluate scattered and unreliable information. Since there is no centralized platform or consistent support from internship companies or universities, students may have to spend hours comparing Facebook groups, Airbnb listings, Reddit posts, university housing boards, and informal sublet pages. Popular platforms can be outdated, unreliable, expensive, or difficult to verify.</p>
+      <p>Students may spend hours looking across different websites and making lists of housing options, only to still face the risk of scams or misleading listings. For students who have never lived off campus before, the process can be even more confusing. Unlike university dorms, private leases involve different landlords, contract terms, deposits, rules, and risks. Students may not know what a fair lease looks like, what questions to ask, or how to protect themselves from unsafe or fraudulent housing situations. This makes the housing search not only time-consuming, but also risky.</p>
+      <p>Short-term housing creates another problem. Many internships last only a few weeks or a few months, but many landlords prefer longer leases. As a result, affordable and convenient housing may not be available to interns. Students may be forced to split apartments with strangers, accept expensive short-term rentals, live far from the internship site, or stay in hotels. Each option creates new costs and risks. Living far away may increase transportation costs and commute stress, while living with strangers may create safety concerns.</p>
+      <p>In addition, students often do not receive enough support from universities or internship companies. Even when internships are paid, students still have to manage housing, transportation, groceries, safety, health needs, and the stress of adjusting to a new working environment. The issue with the system is that housing is viewed as an individual student problem that they must figure out on their own. Housing as a barrier impacts if students are able to do internships at all.</p>
+    </div>
+
+    <div class="report-section" id="proposals">
+      <h2>Proposals for a More Equitable Internship System</h2>
+
+      <div class="proposal-block" id="p1">
+        <div class="pnum">01</div>
+        <div class="pcontent">
+          <h4>Require internships to be paid or fully funded</h4>
+          <p>The most direct solution is to create a paid-or-funded internship standard. Universities should not allow students to take internships for credit unless the internship either pays at least minimum wage or provides a guaranteed stipend that covers basic costs such as housing, food, and transportation. Whenever possible, employers should be required to pay interns, especially when interns are doing work that benefits the company or would otherwise be performed by paid employees. This proposal does not imply that every internship will or should have exactly the same compensation or structure. Rather, it establishes a floor of decency: if you have to work, move away, or take substantial time off from paid employment to do an internship, then you must be given enough financial backing to do so without incurring unreasonable debt or hardship. There is already a legal framework for this: the U.S. Department of Labor uses the "primary beneficiary test" under the Fair Labor Standards Act to determine whether an intern at a for-profit employer is actually an employee who must be paid. For nonprofit, public service, research, or small-company internships that genuinely cannot afford full wages, universities should create need-based internship grants reserved especially for low-income and first-generation students.</p>
+        </div>
+      </div>
+
+      <div class="proposal-block" id="p2">
+        <div class="pnum">02</div>
+        <div class="pcontent">
+          <h4>Create a university-to-university summer housing network</h4>
+          <p>Many universities have dorms or campus apartments that are underused during the summer. At the same time, students from other campuses often need temporary housing for internships nearby. Universities should establish a centralized summer housing exchange where students going on internships can receive dormitory-style housing at partner institutions near their internship location. The University of California system could be a strong model for this idea. If a UC student gets a summer internship in Los Angeles, San Diego, Irvine, Berkeley, or another area near a UC campus, that student should be able to apply for temporary housing through a UC-wide internship housing network. This model already has a partial example in the UCDC program, which provides students with academic internship opportunities in Washington, D.C., and includes a residential component through the UC Washington Center.</p>
+        </div>
+      </div>
+
+      <div class="proposal-block" id="p3">
+        <div class="pnum">03</div>
+        <div class="pcontent">
+          <h4>Require employer commute scores and housing guidance</h4>
+          <p>Employers should provide interns with a commute score before students sign a lease. This commute score would show how realistic it is to get from a housing location to the internship site using public transportation, walking, biking, driving, or shuttle service. It should include estimated commute time, cost, safety considerations, and whether late-night or early-morning transportation is available. Employers should also provide a short list of vetted housing options near the workplace. These could include university dorms, verified sublets, extended-stay housing, or apartment buildings with short-term lease options. Employers can also help by offering shuttle service, transit passes, monthly commuter credits, or company carpools. This proposal is realistic because it does not require every employer to build housing — it simply requires employers to provide practical information and transportation support.</p>
+        </div>
+      </div>
+
+      <div class="proposal-block" id="p4">
+        <div class="pnum">04</div>
+        <div class="pcontent">
+          <h4>Build a centralized and verified internship housing platform</h4>
+          <p>Students need a reliable and centralized housing platform designed specifically for interns. Instead of searching across Facebook groups, Reddit, Airbnb, and informal sublet pages, students should have access to a verified platform that lists safe, short-term, affordable housing options near internship sites. The platform should include verified listings, estimated commute times, lease length, price, safety information, roommate preferences, deposit requirements, and contact information. Universities could also use this platform to create a database of previous student housing experiences so that former interns' knowledge is retained and passed on to those who come after them. The platform could also include sample leases, checklists, budget calculators, and guidance on avoiding scams.</p>
+        </div>
+      </div>
+
+      <div class="proposal-block" id="p5">
+        <div class="pnum">05</div>
+        <div class="pcontent">
+          <h4>Expand remote and hybrid internship options</h4>
+          <p>Finally, employers should expand remote and hybrid internship options when work can be completed effectively outside the office. Remote internships are not perfect for every field, but they can reduce geographic barriers for students who cannot afford to relocate. Remote internships shouldn't be viewed as second-tier opportunities — employers can ensure they are still valuable through mentorship, clearly directed projects, regular check-ins, workshops to build skills, and networking opportunities. Hybrid options can also help: an internship could require students to be on site for one week of training or a few key events, while allowing the rest of the work to be remote. The more internship opportunities become flexible with location, the less opportunity is dictated by whether a student can afford to live in a costly city for three months.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-section" id="conclusion">
+      <h2>Conclusion</h2>
+      <p>Internships should be a gateway to professional opportunity, not a privilege reserved for students who can afford to work for free or relocate to expensive cities. As this report demonstrates, the barriers to equitable internship access are financial, geographic, racial, and institutional, and they compound on one another at every stage. Low-income students are priced out before they apply, pushed into unsafe or inconvenient housing, and left without adequate support from universities or employers.</p>
+      <p>The solutions exist. Internships should be paid or fully funded. Universities should create summer housing networks that make use of existing dorm space. Employers should provide commute scores, vetted housing guidance, transit support, and realistic information before interns sign leases. Universities and employers should also build centralized housing platforms and expand remote or hybrid internship options where possible.</p>
+      <p>The internship housing crisis isn't just a hardship for students. It's an access issue rippling through the college-to-career pipeline. As long as internships are not universally available to students regardless of financial situation, the professional pipeline will continue to sift students based on wealth, rather than merit. An equitable internship ecosystem will consider housing, transportation, and pay as foundational elements of access rather than afterthoughts students should navigate on their own.</p>
+    </div>
+
+    <div class="report-section works-cited" id="works-cited">
+      <h2>Works Cited</h2>
+      <ol>
+        <li>"Average Rent in the U.S. by State." <em>RentCafe</em>, www.rentcafe.com/average-rent-market-trends/us/. Accessed 19 May 2026.</li>
+        <li>Blackwell, Angela Glover, et al. "The Full Cost of Attendance: Addressing Housing, Food, and Other Barriers to Community College Student Success." <em>American Progress</em>. Accessed 19 May 2026.</li>
+        <li>Blumenberg, Evelyn, and Fariba Siddiq. "Commute Distance and Jobs-Housing Fit." <em>Transportation</em>, Springer US, 18 Feb. 2022.</li>
+        <li>Congressional Research Service. <em>Housing Cost Burdens in 2024: In Brief.</em> Library of Congress, 13 May 2026.</li>
+        <li>Georgetown University Center on Education and the Workforce. "Increasing Equitable Access to Internships." <em>The Feed</em>, Georgetown University.</li>
+        <li>Hess, Abigail. "Why Inexperienced Workers Can't Get Entry-Level Jobs." <em>BBC Worklife</em>, 16 Sept. 2021.</li>
+        <li>Hora, Matthew T., et al. <em>Unpaid Internships and Inequality.</em> Center for Research on College-Workforce Transitions, University of Wisconsin–Madison, Apr. 2022.</li>
+        <li>National Association of Colleges and Employers. "The Class of 2023: Inequity Continues to Underpin Internship Participation and Pay Status." <em>NACE</em>, 8 Aug. 2023.</li>
+        <li>National Association of Colleges and Employers. "Paid Interns/Unpaid Interns." <em>NACE</em>.</li>
+        <li>National Association of Colleges and Employers. "Unpaid Internships and the Need for Federal Action." <em>NACE</em>.</li>
+        <li>National Career Development Association. "Understanding the Costs of Unpaid Internships." <em>NCDA</em>, 2023.</li>
+        <li>Relocity. "Interns Need More than Lump Sums to Find Housing." <em>Relocity, Inc.</em>, 29 Apr. 2026.</li>
+        <li>Shen, Michelle. "How to Financially Prepare for Unpaid Internships." <em>Society for Advancing Business Editing and Writing</em>, 9 Nov. 2021.</li>
+        <li>Trellis Strategies and New America's Higher Education Program. "Housing Discrimination Is a Real and Racialized Barrier for Caregiving Students." <em>2025 Student Financial Wellness Survey</em>, New America, 2025.</li>
+        <li>United States Department of Labor. "Fact Sheet #71: Internship Programs Under the Fair Labor Standards Act." <em>Wage and Hour Division</em>, Jan. 2018.</li>
+        <li>University of California Washington Program. "UCDC Program Housing and Internships." <em>University of California Washington Center</em>.</li>
+        <li>"Why Taking an Unpaid Internship Could Cost You." <em>Society for Advancing Business Editing and Writing</em>, 9 Nov. 2021.</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">Student Internship Housing Crisis<span>.</span></div>
+    <div class="footer-meta">UCSD Warren College Writing Program &nbsp;·&nbsp; 2026</div>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 13V3M4 7l4-4 4 4"/>
+      </svg>
+      Back to top
+    </button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
