@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Internship Housing Crisis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Student Internship Housing Crisis<span>.</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#problem" class="nav-link">The problem</a></li>
+      <li><a href="#solutions" class="nav-link">Solutions</a></li>
+      <li><a href="report.html" class="nav-link nav-report">Report</a></li>
+    </ul>
+  </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#problem" class="mobile-link">The problem</a></li>
+      <li><a href="#solutions" class="mobile-link">Solutions</a></li>
+      <li><a href="report.html" class="mobile-link">Report</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">UCSD Warren College · Student Policy Report · 2026</p>
+      <h1>The internship housing crisis is a student <em>equity</em> crisis</h1>
+      <p class="hero-desc">
+        This report investigates the financial, geographic, racial, and institutional barriers that prevent low-income students from accessing professional opportunities. We believe housing shouldn't determine who gets a career.
+      </p>
+      <div class="hero-buttons">
+        <a href="#problem" class="hero-cta">
+          Learn more
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+        <a href="report.html" class="hero-cta hero-cta-outline">
+          Read the report
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat-grid">
+        <div class="hero-stat animate-on-scroll">
+          <div class="hero-stat-num">$12,986</div>
+          <div class="hero-stat-label">avg. cost of a single unpaid internship</div>
+        </div>
+        <div class="hero-stat animate-on-scroll">
+          <div class="hero-stat-num">57%</div>
+          <div class="hero-stat-label">of employers provide no housing help to interns</div>
+        </div>
+        <div class="hero-stat animate-on-scroll">
+          <div class="hero-stat-num">1.4 vs 0.9</div>
+          <div class="hero-stat-label">job offers: paid vs. unpaid interns after graduation</div>
+        </div>
+        <div class="hero-stat animate-on-scroll">
+          <div class="hero-stat-num">38%</div>
+          <div class="hero-stat-label">of unpaid interns received a job offer after college</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About this report</p>
+      <div class="about-grid">
+        <div class="animate-on-scroll">
+          <h2 class="section-heading">What we care about and why</h2>
+          <div class="about-body">
+            <p>This report investigates the financial, geographic, racial, and institutional barriers that prevent low-income students from accessing professional opportunities. We believe housing shouldn't determine who gets a career.</p>
+            <p>A NACE survey of 20,000 graduating seniors found that 52.5 percent completed internships during college — but outcomes split sharply by pay status. Paid interns had a 61 percent job offer rate after graduation. Unpaid interns had just 38 percent. That 23-point gap shows that the internship system doesn't just reward experience. It rewards the financial ability to work without pay.</p>
+          </div>
+        </div>
+        <div class="about-aside animate-on-scroll">
+          <p class="pull-quote">"The system isn't rewarding talent. It's rewarding the ability to pay."</p>
+          <figure class="index-figure">
+            <img src="chart-internship-stats.png" alt="NACE chart showing 52.5% of seniors worked internships. Paid interns had a 61% job offer rate vs 38% for unpaid interns." />
+            <figcaption>NACE survey of 20,000 graduating seniors, Class of 2011</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM SECTION -->
+  <section id="problem" class="problem-section">
+    <div class="section-inner">
+      <p class="section-label">The problem</p>
+      <h2 class="section-heading">Why students can't afford to intern</h2>
+      <p class="problem-body animate-on-scroll">
+        Even when students land competitive internships, geography creates another barrier. Most high-value internships are clustered in cities like Los Angeles, where the map below shows a severe jobs-housing imbalance. Students who can't afford to live near the job center get pushed to the outer edges of the metro — adding costly, exhausting commutes on top of everything else. A cheaper apartment in Riverside doesn't mean a cheaper summer when you're paying for gas and transit every day.
+      </p>
+
+      <figure class="index-figure dark-figure animate-on-scroll">
+        <img src="map-la-housing.png" alt="Map of Southern California showing jobs-housing imbalance. Darker purple areas near central Los Angeles show where internships concentrate but housing is unaffordable. Lighter outer areas show where students are pushed due to cost." />
+        <figcaption>Jobs-housing imbalance across Los Angeles, Orange, San Bernardino, and Riverside counties. Darker areas = highest imbalance. Most internships sit in the darkest zones — the least affordable places to live. (Blumenberg & Siddiq, 2022)</figcaption>
+      </figure>
+
+      <div class="stat-row">
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-item-num">48%</div>
+          <div class="stat-item-label">of college interns were unpaid — Class of 2011</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-item-num">61% vs 38%</div>
+          <div class="stat-item-label">job offer rate: paid vs unpaid interns</div>
+        </div>
+        <div class="stat-item animate-on-scroll">
+          <div class="stat-item-num">57%</div>
+          <div class="stat-item-label">of employers not helping interns with housing at all</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS SECTION -->
+  <section id="solutions">
+    <div class="section-inner">
+      <p class="section-label">A way forward</p>
+      <div class="solution-grid">
+        <div class="animate-on-scroll">
+          <h2 class="section-heading">Structural fixes, not individual workarounds</h2>
+          <div class="solution-body">
+            <p>Solving the internship housing crisis requires action from universities, employers, and policymakers together. Universities should create summer housing networks that connect students to available dorm space near their internship sites. Employers should provide commute scores, vetted housing lists, and transit support before interns sign a lease. At the base level, internships should be paid or fully funded — because no student should have to go into debt to build a resume.</p>
+          </div>
+          <a href="report.html" class="report-link">
+            Read the full report
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+        <div class="proposals animate-on-scroll">
+          <div class="proposal-item">
+            <div class="proposal-num">01</div>
+            <div class="proposal-text">
+              <strong>Require paid or fully funded internships</strong>
+              Universities should not allow students to take internships for credit unless the internship pays minimum wage or provides a stipend covering housing, food, and transportation.
+            </div>
+          </div>
+          <div class="proposal-item">
+            <div class="proposal-num">02</div>
+            <div class="proposal-text">
+              <strong>Build a university-to-university housing network</strong>
+              Use underused summer dorms so students can access affordable housing at partner campuses near their internship site.
+            </div>
+          </div>
+          <div class="proposal-item">
+            <div class="proposal-num">03</div>
+            <div class="proposal-text">
+              <strong>Require employer commute scores</strong>
+              Employers should publish realistic commute data — time, cost, safety, transit options — before interns sign a lease in an unfamiliar city.
+            </div>
+          </div>
+          <div class="proposal-item">
+            <div class="proposal-num">04</div>
+            <div class="proposal-text">
+              <strong>Build a verified internship housing platform</strong>
+              A centralized, scam-free platform with verified listings, lease guidance, and student reviews so no one starts from scratch.
+            </div>
+          </div>
+          <div class="proposal-item">
+            <div class="proposal-num">05</div>
+            <div class="proposal-text">
+              <strong>Expand remote and hybrid options</strong>
+              Remote internships reduce geographic barriers. Employers should treat them as full opportunities, not second-tier fallbacks.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Student Internship Housing Crisis<span>.</span></div>
+    <div class="footer-meta">UCSD Warren College Writing Program &nbsp;·&nbsp; 2026</div>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 13V3M4 7l4-4 4 4"/>
+      </svg>
+      Back to top
+    </button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
