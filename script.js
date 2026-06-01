@@ -1,12 +1,9 @@
 /* ─────────────────────────────────────────────────────
-   script.js — Intern Housing Watch
-   Handles: nav scroll shadow, active nav links,
-            hamburger menu, scroll animations,
-            back-to-top button
+   script.js — Student Internship Housing Crisis
+   Works on both index.html and report.html
 ───────────────────────────────────────────────────── */
 
 // ── 1. NAV SCROLL SHADOW ────────────────────────────
-// Adds a subtle shadow to the navbar once the user scrolls
 
 const navbar = document.getElementById('navbar');
 
@@ -19,37 +16,36 @@ window.addEventListener('scroll', () => {
 });
 
 
-// ── 2. ACTIVE NAV LINK HIGHLIGHTING ─────────────────
-// Highlights the nav link for whichever section is on screen
+// ── 2. ACTIVE NAV LINK HIGHLIGHTING (index only) ────
+// Only runs when section[id] elements exist on the page
 
-const sections = document.querySelectorAll('section[id], div[id]');
+const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
-const observerOptions = {
-  root: null,
-  rootMargin: '-40% 0px -55% 0px',
-  threshold: 0
-};
-
-const sectionObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.getAttribute('id');
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${id}`) {
-          link.classList.add('active');
-        }
-      });
-    }
+if (sections.length > 0) {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-40% 0px -55% 0px',
+    threshold: 0
   });
-}, observerOptions);
 
-sections.forEach(section => sectionObserver.observe(section));
+  sections.forEach(section => sectionObserver.observe(section));
+}
 
 
 // ── 3. HAMBURGER MOBILE MENU ─────────────────────────
-// Opens/closes the mobile dropdown menu
 
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -57,11 +53,7 @@ const mobileLinks = document.querySelectorAll('.mobile-link');
 
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.contains('open');
-  if (isOpen) {
-    closeMobileMenu();
-  } else {
-    openMobileMenu();
-  }
+  isOpen ? closeMobileMenu() : openMobileMenu();
 });
 
 function openMobileMenu() {
@@ -76,12 +68,10 @@ function closeMobileMenu() {
   hamburger.setAttribute('aria-label', 'Open menu');
 }
 
-// Close menu when a link is clicked
 mobileLinks.forEach(link => {
   link.addEventListener('click', closeMobileMenu);
 });
 
-// Close menu when clicking outside of it
 document.addEventListener('click', (e) => {
   if (
     mobileMenu.classList.contains('open') &&
@@ -93,8 +83,9 @@ document.addEventListener('click', (e) => {
 });
 
 
-// ── 4. SMOOTH SCROLL FOR ALL ANCHOR LINKS ───────────
-// Handles the hero CTA button and nav links
+// ── 4. SMOOTH SCROLL FOR SAME-PAGE ANCHOR LINKS ─────
+// Only intercepts links that start with # (same-page links)
+// Links to other pages like report.html navigate normally
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -108,16 +99,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const navHeight = navbar.offsetHeight;
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
 
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: targetPosition, behavior: 'smooth' });
   });
 });
 
 
 // ── 5. SCROLL-TRIGGERED ANIMATIONS ──────────────────
-// Fades in elements marked with .animate-on-scroll
 
 const animatedElements = document.querySelectorAll('.animate-on-scroll');
 
@@ -125,18 +112,15 @@ const animationObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      animationObserver.unobserve(entry.target); // only animate once
+      animationObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.12
-});
+}, { threshold: 0.1 });
 
 animatedElements.forEach(el => animationObserver.observe(el));
 
 
 // ── 6. BACK TO TOP BUTTON ────────────────────────────
-// Smooth scrolls back to the top when clicked
 
 const backToTopBtn = document.getElementById('back-to-top');
 
