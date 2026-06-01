@@ -636,3 +636,53 @@ footer {
     padding: 2rem 1.25rem;
   }
 }
+
+/* ─── REPORT NAV LINK ─────────────────────────────── */
+
+.nav-report {
+  color: var(--accent) !important;
+  font-weight: 500 !important;
+}
+
+.nav-report::after {
+  background: var(--accent) !important;
+}
+
+/* ─── HERO SECOND BUTTON ──────────────────────────── */
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-cta-outline {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+
+.hero-cta-outline:hover {
+  background: var(--paper-warm);
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+
+/* ─── SOLUTIONS REPORT LINK ───────────────────────── */
+
+.report-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: gap 0.2s;
+}
+
+.report-link:hover {
+  gap: 10px;
+}
